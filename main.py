@@ -36,6 +36,10 @@ def score(cards):
 def card_pick(deck):
     deck.append(random.choice(cards))
 
+def print_score(deck):
+    print(f"Your cards: {player_cards}, current score: {score(player_cards)}")
+    print(f"Computer's first card: {computer_cards[1]}")
+
 cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 
 play = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ")
@@ -48,9 +52,24 @@ while play == "y":
     computer_cards = []
     card_pick(player_cards)
     card_pick(player_cards)
-    card_pick(computer_cards)
-    card_pick(computer_cards)
-    print(f"Your cards: {player_cards}, current score: {score(player_cards)}")
-    print(f"Computer's first card: {computer_cards[1]}")
-    deal = input("Type 'y' to get another card, type 'n' to pass: ")
-    break
+    while score(computer_cards) < 17:
+        card_pick(computer_cards)
+        
+    print_score(player_cards)
+    
+    def redeal():
+        deal = input("Type 'y' to get another card, type 'n' to pass: ")
+        if deal == "y":
+            card_pick(player_cards)
+            print_score(player_cards)
+            if score(player_cards) > 21:
+                print_score(player_cards)
+                print_score(computer_cards)
+                print("You went over. You lose.")
+            else:
+                redeal()
+    
+    redeal()
+    
+
+    
