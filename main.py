@@ -43,10 +43,9 @@ play = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ")
 if play == "y":
     print(art.logo)
 
-player_cards = []
-computer_cards = []
-
 while play == "y":
+    player_cards = []
+    computer_cards = []
     card_pick(player_cards)
     card_pick(player_cards)
     card_pick(computer_cards)
