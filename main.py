@@ -70,6 +70,15 @@ while play == "y":
                 redeal()
     
     redeal()
-    
+    print_score(player_cards)
+    print_score(computer_cards)
 
+    if score(computer_cards) > 21:
+        print("You win.")
+    elif score(player_cards) > score(computer_cards):
+        print("You win.")
+    else:
+        print("You lose")
+    
+    play = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ")
     
